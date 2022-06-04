@@ -1,21 +1,20 @@
 import React, { FC } from 'react'
-import { IEpizode } from '../types/types'
+import { Episode } from '../types/types'
 
-interface EpizodeListProps {
-    epizodes: IEpizode[];
+interface EpisodeListProps {
+    episodes: Episode[];
 }
 
-const EpizodeList: FC<EpizodeListProps> = ({ epizodes }) => {
-
+const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
     return (
         <div>
-            {epizodes.map(epizode => 
-                <div key={epizode.id}>
-                    {epizode.id}. {epizode.name}: {epizode.air_date}|| {epizode.episode}
+            {episodes.map(episode => 
+                <div key={episode.id}>
+                    {episode.id}. {episode.name}: {episode.air_date}||{episode.episode}
                 </div>
             )}
         </div>
     )
 }
 
-export default EpizodeList
+export default EpisodeList

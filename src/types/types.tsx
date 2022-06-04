@@ -1,12 +1,12 @@
 // описание типа значений для описания эпизода //
-export interface IEpizode {
+export type Episode = {
     id: number;
     name: string;
     air_date: string;
     episode: string;
 }
 
-export interface Info {
+type Info = {
     count: number;
     pages: number;
     next: string;
@@ -14,7 +14,7 @@ export interface Info {
 }
 
 // тип значений данных, получаемых с сервера //
-export interface getEpizodeProps {
+export type EpisodeProps = {
     info: Info;
-    results: IEpizode[];
+    results: Episode[];
 }

@@ -1,27 +1,27 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import EpizodeList from './components/EpizodeList';
-import { getEpizodeProps, IEpizode } from './types/types';
+import { EpisodeProps, Episode } from './types/types';
 
 const App = () => {
-  const [epizodes, setEpizode] = useState<IEpizode[]>([])
+  const [episodes, setEpisode] = useState<Episode[]>([])
 
-  useEffect( () => {
-      getEpizodes()
+  useEffect(() => {
+    getEpisodes()
   }, [])
 
-  async function getEpizodes() {
+  async function getEpisodes() {
     try {
-      const response = await axios.get<getEpizodeProps>('https://rickandmortyapi.com/api/episode')
-      setEpizode(response.data.results)
-    } catch(e) {
+      const response = await axios.get<EpisodeProps>('https://rickandmortyapi.com/api/episode')
+      setEpisode(response.data.results)
+    } catch (e) {
       alert(e)
     }
   }
 
   return (
     <div>
-      <EpizodeList epizodes={epizodes} />
+      <EpizodeList episodes={episodes} />
     </div>
   )
 }
