@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 import { Episode } from '../types/types'
 
-interface EpisodeListProps {
+interface EpisodeTableProps {
     episodes: Episode[];
 }
 
-const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
+const EpisodeTable: FC<EpisodeTableProps> = ({ episodes }) => {
+    
     return (
         <div>
             {episodes.map(episode => 
@@ -17,4 +18,4 @@ const EpisodeList: FC<EpisodeListProps> = ({ episodes }) => {
     )
 }
 
-export default EpisodeList
+export default EpisodeTable;

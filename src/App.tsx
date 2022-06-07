@@ -1,27 +1,19 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import EpizodeList from './components/EpizodeList';
-import { EpisodeProps, Episode } from './types/types';
+import { useStore } from "effector-react";
+import { useEffect } from "react";
+import EpisodeTable from "./components/EpisodeTable";
+import { $episodes_store, fetchEpisodes } from "./store/Episodes";
+
 
 const App = () => {
-  const [episodes, setEpisode] = useState<Episode[]>([])
-
   useEffect(() => {
-    getEpisodes()
-  }, [])
+    fetchEpisodes()
+  }, []);
 
-  async function getEpisodes() {
-    try {
-      const response = await axios.get<EpisodeProps>('https://rickandmortyapi.com/api/episode')
-      setEpisode(response.data.results)
-    } catch (e) {
-      alert(e)
-    }
-  }
+  const episodes = useStore($episodes_store)
 
   return (
-    <div>
-      <EpizodeList episodes={episodes} />
+    <div>  
+      <EpisodeTable episodes={episodes} />
     </div>
   )
 }
