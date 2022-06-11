@@ -1,19 +1,15 @@
 import { useStore } from "effector-react";
-import { useEffect } from "react";
+import { SetStateAction, useEffect } from "react";
 import EpisodeTable from "./components/EpisodeTable";
 import { $episodes_store, fetchEpisodes } from "./store/Episodes";
+import './App.css'
+import Tabs from "./components/Tabs";
 
 
 const App = () => {
-  useEffect(() => {
-    fetchEpisodes()
-  }, []);
-
-  const episodes = useStore($episodes_store)
-
   return (
-    <div>  
-      <EpisodeTable episodes={episodes} />
+    <div>
+      <Tabs />
     </div>
   )
 }

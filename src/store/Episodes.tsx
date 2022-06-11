@@ -1,6 +1,7 @@
 import axios from "axios";
-import { createEffect, createStore } from "effector";
+import { createEffect, createStore, is } from "effector";
 import { Episode, EpisodeProps } from "../types/types";
+
 
 export const fetchEpisodes = createEffect(async () => {
     //первый запрос, чтоб узнать количество страниц
@@ -17,6 +18,7 @@ export const fetchEpisodes = createEffect(async () => {
         const response = await axios.get<EpisodeProps>('https://rickandmortyapi.com/api/episode?page=' + (i + 1));
         arr.push(...response.data.results);
     }
+
     return arr;
 })
 
